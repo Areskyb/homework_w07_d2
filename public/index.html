@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <script src="./js/bundle.js"></script>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <div class="app">
+      <h1>2Do List</h1>
+      <ul>
+        <li v-bind:class = "item.isDone ? 'done' : 'not-done'"
+        v-for= "(item,index) in items" v-on:click = "prioritize">
+        <span>{{item.description}}</span>
+        <input type="checkbox" id='check' v-on:click= "checkItem(index)">
+      </li>
+      </ul>
+
+      <form v-on:submit.prevent = "newTodo">
+        <label for="todo">Add a new Todo: </label>
+        <input type="text" id='todo' v-model= 'newItem'>
+        <input type="submit"  value="Add a new one" id='submit'>
+      </form>
+    </div>
+  </body>
+</html>
